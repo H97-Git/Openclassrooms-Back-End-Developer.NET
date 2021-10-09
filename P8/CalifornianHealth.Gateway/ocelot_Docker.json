@@ -1,0 +1,253 @@
+﻿{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/Consultant",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.demographics",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Consultant",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 20,
+        "Region": "consultant"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/Consultant/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.demographics",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Consultant/{id}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 20,
+        "Region": "consultant"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/Consultant/add",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.demographics",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Consultant/add",
+      "UpstreamHttpMethod": [
+        "Post"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Consultant/edit",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.demographics",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Consultant/edit",
+      "UpstreamHttpMethod": [
+        "Put"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Consultant/delete/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.demographics",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Consultant/delete/{id}",
+      "UpstreamHttpMethod": [
+        "Delete"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Availability",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Availability",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Availability/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Availability/{id}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Availability/Consultant/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Availability/Consultant/{id}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Availability/add",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Availability/add",
+      "UpstreamHttpMethod": [
+        "Post"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Availability/edit",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Availability/edit",
+      "UpstreamHttpMethod": [
+        "Put"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Availability/delete/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Availability/delete/{id}",
+      "UpstreamHttpMethod": [
+        "Delete"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Booking",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Booking",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Booking/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Booking/{id}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Booking/Consultant/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Booking/Consultant/{id}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Booking/add",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Booking/add",
+      "UpstreamHttpMethod": [
+        "Post"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Booking/edit",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Booking/edit",
+      "UpstreamHttpMethod": [
+        "Put"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/Booking/delete/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "californianhealth.booking",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Booking/delete/{id}",
+      "UpstreamHttpMethod": [
+        "Delete"
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://californianhealth.gateway:80"
+  }
+}

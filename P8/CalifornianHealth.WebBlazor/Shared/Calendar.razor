@@ -1,0 +1,140 @@
+﻿@using CalifornianHealth.WebBlazor.Infrastructure.Services.Interface
+@using CalifornianHealth.WebBlazor.Models
+@inject IAvailabilityService _availabilityService
+@inject IJSRuntime _js
+
+<div id="Calendar">
+    <header>
+        <button class="header__btn header__btn--left" title="Menu">
+            <svg class="icon" width="20px" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#fff" d="M0 0h20v2H0zM0 7h20v2H0zM0 14h20v2H0z"/>
+            </svg>
+        </button>
+        <button class="header__btn header__btn--right" title="Add event">
+            <svg class="icon" width="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="#fff" d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"/>
+            </svg>
+        </button>
+    </header>
+    <main>
+        <div class="calendar-container">
+            <div class="calendar-container__header">
+                <button class="calendar-container__btn calendar-container__btn--left" title="Previous">
+                    <i class="arrow left"></i>
+                </button>
+                <h2 class="calendar-container__title">Loading Calendar ...</h2>
+                <button class="calendar-container__btn calendar-container__btn--right" title="Next">
+                    <i class="arrow right"></i>
+                </button>
+            </div>
+            <div class="calendar-container__body">
+                <div class="calendar-table">
+                    <div class="calendar-table__header">
+                        <div class="calendar-table__row">
+                            <div class="calendar-table__col">Su</div>
+                            <div class="calendar-table__col">Mo</div>
+                            <div class="calendar-table__col">Tu</div>
+                            <div class="calendar-table__col">We</div>
+                            <div class="calendar-table__col">Th</div>
+                            <div class="calendar-table__col">Fr</div>
+                            <div class="calendar-table__col">Sa</div>
+                        </div>
+                    </div>
+                    <div class="calendar-table__body">
+                        @for (var i = 0; i <= 4; i++)
+                        {
+                            <div class="calendar-table__row">
+                                @for (var y = 0; y <= 6; y++)
+                                {
+                                    <div class="calendar-table__col ">
+                                        <div class="calendar-table__item">
+                                            <span>NaN</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="events-container">
+            @if (Consultant is not null)
+            {
+                <p>Availabilities :</p>
+                <ul class="events__list">
+                    <SpinLoader IsLoading="_isAvailabilityLoading">
+                        <LoadingTemplate>
+                            <li class="events__item">
+                                <div class="events__item--left">
+                                    <span class="events__name">Loading availabilities ...</span>
+                                    <Wave Color="#0fb0b0" Size="4em" Center="true"/>
+                                </div>
+                            </li>
+                        </LoadingTemplate>
+                        <ContentTemplate>
+                            @foreach (var a in _availability)
+                            {
+                                <li class="events__item" data-month="@a.DateTime.Month" data-day="@a.DateTime.Day">
+                                    <div class="events__item--left">
+                                        <span class="events__name">Book at @a.DateTime.ToString("HH:mm")</span>
+                                        <span class="events__date">@ConsultantFullName : @a.DateTime.ToString("MM/dd/yyyy")</span>
+                                    </div>
+                                    <span @onclick="() => Submit(a)" class="events__tag">Submit</span>
+                                </li>
+                            }
+                        </ContentTemplate>
+                    </SpinLoader>
+                </ul>
+            }
+        </div>
+    </main>
+</div>
+
+@code{
+
+    [Parameter]
+    public ConsultantModel Consultant { get; set; }
+
+    private List<AvailabilityModel> _availability;
+    private string ConsultantFullName { get; set; }
+    private bool _isAvailabilityLoading = true;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Consultant is not null)
+        {
+            ConsultantFullName = $"{Consultant.GivenName} {Consultant.FamilyName}";
+            _availability = await _availabilityService.GetByConsultantId(Consultant.Id);
+            _availability.Sort((x, y) => DateTime.Compare(x.DateTime, y.DateTime));
+            await Task.Delay(1000);
+            _isAvailabilityLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await _js.InvokeVoidAsync("LoadListener");
+            await _js.InvokeVoidAsync("LoadCalendarDate");
+        }
+    }
+
+    private async Task Submit(AvailabilityModel availability)
+    {
+        var jsObject = MapHelperJs(Consultant, availability);
+        await _js.InvokeVoidAsync("ConfirmBooking", jsObject);
+    }
+
+    private BookingHelperJs MapHelperJs(ConsultantModel consultant, AvailabilityModel availability)
+    {
+        return new BookingHelperJs
+        {
+            ConsultantModel = consultant,
+            AvailabilityModel = availability
+        };
+    }
+
+}

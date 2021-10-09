@@ -1,0 +1,65 @@
+version: '3.4'
+services:
+  californianhealth.webblazor:
+    image: '${DOCKER_REGISTRY-}californianhealthwebblazor'
+    build:
+      context: .
+      dockerfile: CalifornianHealth.WebBlazor/Dockerfile
+    depends_on:
+      - californianhealth.gateway
+    networks:
+      - bridge
+  californianhealth.gateway:
+    image: '${DOCKER_REGISTRY-}californianhealthgateway'
+    build:
+      context: .
+      dockerfile: CalifornianHealth.Gateway/Dockerfile
+    depends_on:
+      - californianhealth.demographics
+      - californianhealth.booking
+    networks:
+      - bridge
+  californianhealth.demographics:
+    image: '${DOCKER_REGISTRY-}californianhealthdemographics'
+    build:
+      context: .
+      dockerfile: CalifornianHealth.Demographics/Dockerfile
+    depends_on:
+      - sqldata
+    networks:
+      - bridge
+  californianhealth.booking:
+    image: '${DOCKER_REGISTRY-}californianhealthbooking'
+    build:
+      context: .
+      dockerfile: CalifornianHealth.Booking/Dockerfile
+    depends_on:
+      - sqldata
+      - californianhealth.rabbitmq
+    networks:
+      - bridge
+  californianhealth.rabbitmq:
+    hostname: 'RabbitHostName'
+    image: 'rabbitmq:3-management'
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: 'admin'
+      RABBITMQ_DEFAULT_PASS: '5w3Dxn2030iGWk56UMsWC'
+      RABBITMQ_DEFAULT_VHOST: '/'
+    ports:
+      - '15672:15672'
+      - '5672:5672'
+    networks:
+      - bridge
+  sqldata:
+    image: 'mcr.microsoft.com/mssql/server:latest'
+    restart: always
+    environment:
+      - SA_PASSWORD=Passw@rd123!
+      - ACCEPT_EULA=Y
+    ports:
+      - '5433:1434'
+    networks:
+      - bridge
+networks:
+  bridge: null

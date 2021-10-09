@@ -1,0 +1,74 @@
+﻿@page "/"
+@namespace CalifornianHealth.WebBlazor.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Californian Health</title>
+    <base href="~/"/>
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/calendar.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link href="_content/BlazorPro.Spinkit/spinkit.min.css" rel="stylesheet"/>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="60">
+<component type="typeof(App)" render-mode="ServerPrerendered"/>
+<template id="confirmBookingTemplate">
+    <swal-html>
+        <div class="containter">
+            <div class="row">
+                <div class="thumbnail col-md-6">
+                    <img id="confirmBookingImg" class="team-img">
+                    <div class="caption col-md-6">
+                        <h3 id="confirmBookingName"></h3>
+                        <p id="confirmBookingSpecialty"></p>
+                    </div>
+                </div>
+                <div class="caption col-md-6">
+                    <div class="message-booking">
+                        <h2> Confirm booking :</h2>
+                        <h4 id="confirmBookingDate"></h4>
+                        <h1 id="confirmBookingHour"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </swal-html>
+    <swal-button type="confirm">
+        Book !
+    </swal-button>
+    <swal-button type="cancel">
+        Cancel
+    </swal-button>
+    <swal-param name="allowEscapeKey" value="true"/>
+    <swal-param name="showLoaderOnConfirm" value="true"/>
+    <swal-param name="reverseButtons" value="true"/>
+    <swal-param name="showCloseButton" value="false"/>
+    <swal-param name="buttonsStyling" value="false"/>
+    <swal-param name="buttonsStyling" value="false"/>
+    <swal-param name="focusCancel" value="true"/>
+    <swal-param name="customClass"
+                value='{
+                        "popup": "confirmBookingSwal2",
+                        "confirmButton":"btn btn-success",
+                        "cancelButton":"btn btn-danger"
+                        }'/>
+</template>
+<script src="_framework/blazor.server.js"></script>
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/jquery.easing.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/moment.js"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+<script src="~/js/axios.min.js"></script>
+<script src="~/js/custom.js"></script>
+</body>
+</html>

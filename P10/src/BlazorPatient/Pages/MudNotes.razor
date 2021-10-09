@@ -1,0 +1,97 @@
+﻿@page "/Patient/{PatientId:int}"
+@using BlazorPatient.Models
+@inject Infrastructure.Services.INoteService NoteService
+@inject Infrastructure.Services.IPatientService PatientService
+@inject Infrastructure.Services.IAssessmentService AssessmentService
+@inject ISnackbar SnackBar
+@inject NavigationManager NavigationManager
+
+<MudCard Elevation="25">
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Variant="Variant.Text" Typo="Typo.h5" Color="Color.Primary">
+                @_patient.GivenName @_patient.FamilyName
+                <MudChip Icon="@_riskLevelIcon" Color="@_riskLevelColor" Variant="Variant.Filled">@_riskLevel</MudChip>
+            </MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudText Variant="Variant.Text" Margin="Margin.Normal">Age : <MudText Color="Color.Primary" Inline="true">@_age</MudText></MudText>
+        <MudText Variant="Variant.Text" Margin="Margin.Normal">Date of Birth : <MudText Color="Color.Primary" Inline="true">@GetPatientDate(_patient.DateOfBirth) </MudText></MudText>
+        <MudText Variant="Variant.Text" Margin="Margin.Normal">Gender : <MudText Color="Color.Primary" Inline="true">@_patient.Gender</MudText></MudText>
+        <MudText Variant="Variant.Text" Margin="Margin.Normal">Home Address : <MudText Color="Color.Primary" Inline="true">@_patient.HomeAddress</MudText></MudText>
+        <MudText Variant="Variant.Text" Margin="Margin.Normal">Phone Number : <MudText Color="Color.Primary" Inline="true">@_patient.PhoneNumber</MudText></MudText>
+    </MudCardContent>
+</MudCard>
+<br />
+@if (_notes is null)
+{
+    <MudCard Elevation="25">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Align="Align.Center" Variant="Variant.Text" Typo="Typo.h5">Loading ...</MudText>
+                <br />
+                <MudProgressLinear Color="Color.Primary" Indeterminate="true" />
+                <br />
+            </CardHeaderContent>
+        </MudCardHeader>
+    </MudCard>
+}
+else if (_notes.Count is 0)
+{
+    <MudCard Elevation="25">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Variant="Variant.Text" Typo="Typo.h6">No patient notes/history found.</MudText>
+                <br />
+            </CardHeaderContent>
+        </MudCardHeader>
+    </MudCard>
+}
+else
+{
+    <MudTable Elevation="25" Items="_notes" Filter="new Func<NoteModel, bool>(SearchNote)" @bind-note="_note" Dense="true" Hover="true" Striped="true">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Note</MudText>
+            <MudToolBarSpacer />
+            <MudTextField @bind-Value="_searchString"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          IconSize="Size.Medium" Class="mt-0"
+                          Placeholder="Search for notes...">
+            </MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Date</MudTh>
+            <MudTh>Message</MudTh>
+            <MudTh>Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="CreatedTime">@context.CreatedTime</MudTd>
+            <MudTd DataLabel="Message">@context.Message</MudTd>
+            <MudTd>
+                <MudTooltip Text="Edit">
+                    <MudFab @onclick="@(()=>EditNote(@context.Id))" Color="Color.Primary" Icon="@Icons.Material.Filled.Edit" Size="Size.Small" IconSize="Size.Small" />
+                </MudTooltip>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+<br />
+<MudCard Elevation="25">
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">@_cardHeaderString</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudTextField @bind-Value="_note.Message" Label="Message" Margin="Margin.Normal" Variant="Variant.Text" Lines="10" />
+        <br />
+        <MudButton Color="Color.Info" OnClick="SaveNote" Variant="Variant.Filled">Save Note</MudButton>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Parameter]
+    public int PatientId { get; set; }
+}

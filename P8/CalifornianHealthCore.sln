@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalifornianHealth.Demographics", "CalifornianHealth.Demographics\CalifornianHealth.Demographics.csproj", "{FFEDB3E8-5847-465B-B915-9859891CC3C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalifornianHealth.WebBlazor", "CalifornianHealth.WebBlazor\CalifornianHealth.WebBlazor.csproj", "{74A9FCA8-618D-43D7-A30D-3CB6308450A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalifornianHealth.Booking", "CalifornianHealth.Booking\CalifornianHealth.Booking.csproj", "{F7F2CA0E-C0BB-4566-A816-7945EEB3F44A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalifornianHealth.Gateway", "CalifornianHealth.Gateway\CalifornianHealth.Gateway.csproj", "{CBC5912E-0666-433F-8E29-017B47E7A44E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{932CF8F5-E8B2-4805-9F37-E07DD08684AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalifornianHealth.Tests", "CalifornianHealth.Tests\CalifornianHealth.Tests.csproj", "{0C16CD4B-5E5C-42D1-9796-BFA264252B47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFEDB3E8-5847-465B-B915-9859891CC3C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFEDB3E8-5847-465B-B915-9859891CC3C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFEDB3E8-5847-465B-B915-9859891CC3C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFEDB3E8-5847-465B-B915-9859891CC3C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74A9FCA8-618D-43D7-A30D-3CB6308450A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74A9FCA8-618D-43D7-A30D-3CB6308450A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74A9FCA8-618D-43D7-A30D-3CB6308450A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74A9FCA8-618D-43D7-A30D-3CB6308450A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7F2CA0E-C0BB-4566-A816-7945EEB3F44A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F2CA0E-C0BB-4566-A816-7945EEB3F44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F2CA0E-C0BB-4566-A816-7945EEB3F44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F2CA0E-C0BB-4566-A816-7945EEB3F44A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC5912E-0666-433F-8E29-017B47E7A44E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC5912E-0666-433F-8E29-017B47E7A44E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC5912E-0666-433F-8E29-017B47E7A44E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC5912E-0666-433F-8E29-017B47E7A44E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{932CF8F5-E8B2-4805-9F37-E07DD08684AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{932CF8F5-E8B2-4805-9F37-E07DD08684AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{932CF8F5-E8B2-4805-9F37-E07DD08684AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{932CF8F5-E8B2-4805-9F37-E07DD08684AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C16CD4B-5E5C-42D1-9796-BFA264252B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C16CD4B-5E5C-42D1-9796-BFA264252B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C16CD4B-5E5C-42D1-9796-BFA264252B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C16CD4B-5E5C-42D1-9796-BFA264252B47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADED1789-934B-4946-ACE1-CB8FD73060FD}
+	EndGlobalSection
+EndGlobal

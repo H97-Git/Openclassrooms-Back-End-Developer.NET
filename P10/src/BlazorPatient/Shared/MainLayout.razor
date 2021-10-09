@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<MudThemeProvider Theme="_currentTheme" />
+<MudSnackbarProvider />
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Color="Color.Inherit"
+                       Edge="Edge.Start"
+                       Icon="@Icons.Material.Filled.Menu"
+                       OnClick="DrawerToggle" />
+        <MudFab Color="Color.Primary" Icon="@Icons.Material.Rounded.Home"
+                IconSize="Size.Large" Label="Health Clinics" Size="Size.Large" Link="/" />
+        <MudAppBarSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.Brightness4" OnClick="DarkMode" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent Class="mainContent">
+        @Body
+    </MudMainContent>
+</MudLayout>

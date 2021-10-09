@@ -1,0 +1,105 @@
+﻿@page "/Booking"
+@using CalifornianHealth.WebBlazor.Infrastructure.Services.Interface
+@using CalifornianHealth.WebBlazor.Models
+@inject IConsultantService _consultantService
+@inject IBookingService _bookingService
+<Banner></Banner>
+<section style="text-align: center;">
+    <SpinLoader IsLoading="_isConsultantLoading">
+        <LoadingTemplate>
+            <div class="spinner">
+                <p>Loading consultants ...</p>
+                <Wave Color="#0fb0b0" Size="4em" Center="true"/>
+            </div>
+        </LoadingTemplate>
+        <ContentTemplate>
+            <label for="consultant">Select a consultant you wish to make an appointment for : </label>
+            <div class="form-group" id="consultant">
+                <select class="form-control" @onchange="@ChangeConsultant">
+                    <option value="">-- Consultants --</option>
+                    @foreach (var c in _consultants)
+                    {
+                        <option value="@c.Id">@c.GivenName @c.FamilyName - @c.Specialty</option>
+                    }
+                </select>
+            </div>
+        </ContentTemplate>
+    </SpinLoader>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            @if (_selectedConsultant is not null)
+            {
+                <div class="col-md-4 col-xs-12">
+                    <div class="thumbnail">
+                        <img src=@($"img/doctor{_selectedConsultant.Id}.jpg") class="team-img">
+                        <div class="caption">
+                            <h3>@_selectedConsultant.ToString()</h3>
+                            <p>@_selectedConsultant.Specialty</p>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (_selectedConsultant is null)
+            {
+                <div class="col-md-8 col-xs-12 disabled" style="float:none;margin:auto;">
+                    <Calendar></Calendar>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-8 col-xs-12">
+                    <Calendar Consultant="@_selectedConsultant"></Calendar>
+                </div>
+            }
+        </div>
+    </div>
+    <p>Debug Info :</p>
+    <p>Booking Count : @_bookings?.Count </p>
+</section>
+<Footer></Footer>
+
+@code{
+    private List<ConsultantModel> _consultants;
+    private List<BookingModel> _bookings;
+    private ConsultantModel _selectedConsultant;
+    private bool _isConsultantLoading = true;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _consultants = await _consultantService.Get();
+            _bookings = await _bookingService.Get();
+            await Task.Delay(500);
+            _isConsultantLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private void ChangeConsultant(ChangeEventArgs e)
+    {
+        if (e.Value == null) return;
+        var id = e.Value.ToString();
+        _selectedConsultant = _consultants.Find(c => c.Id.ToString() == id);
+    }
+
+}

@@ -1,0 +1,26 @@
+version: '3.4'
+services:
+  californianhealth.gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - 'ASPNETCORE_URLS=http://+:80'
+    ports:
+      - '7000:80'
+  californianhealth.webblazor:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - 'ASPNETCORE_URLS=http://+:80'
+    ports:
+      - '8080:80'
+  californianhealth.demographics:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - 'ASPNETCORE_URLS=http://+:80'
+    ports:
+      - '5000:80'
+  californianhealth.booking:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - 'ASPNETCORE_URLS=http://+:80'
+    ports:
+      - '6000:80'
