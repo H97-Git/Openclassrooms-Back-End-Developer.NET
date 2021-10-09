@@ -1,0 +1,168 @@
+﻿@model The_Car_Hub.Models.InventoryViewModel
+@{
+    ViewBag.Title = "The Car Hub - Details";
+    Layout = "~/Views/Shared/CarDealerTemplate/_MainLayout.cshtml";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <div>
+                    @{ var expandedImgSrc = "/upload/" + Model.PhotosName.FirstOrDefault();}
+                    <img id="expandedImg" src="@expandedImgSrc" alt="" class="img-responsive wc-image">
+                </div>
+                <br>
+                <div class="row">
+                    @foreach (var item in Model.PhotosName)
+                    {
+                        <div class="col-sm-4 col-xs-6">
+                            <div>
+                                @{ var imgResponsiveSrc = "/upload/" + item;}
+                                <img src="@imgResponsiveSrc " onclick="imageSwitch(this);" class="img-responsive transparent">
+                            </div>
+                            <br>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <h2><strong>@Html.DisplayFor(modelItem => modelItem.Make) </strong>@Html.DisplayFor(modelItem => modelItem.Model)</h2>
+                <p class="lead"><strong class="text-primary">$ @Html.DisplayFor(modelItem => modelItem.SellingPrice)</strong></p>
+                <div class="row">
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Type</span>
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.Type)</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Make</span>
+
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.Make)</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left"> Model</span>
+
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.Model)</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">First registration</span>
+
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.Year)</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Mileage</span>
+
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.Kilometer) km</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Fuel</span>
+
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.Fuel)</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Engine size</span>
+
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.EngineSize) cc</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Gearbox</span>
+
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.Gearbox)</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Number of seats</span>
+
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.Seats)</strong>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Color</span>
+
+                                <strong class="pull-right">@Html.DisplayFor(modelItem => modelItem.Color)</strong>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Vehicle Description</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>@Html.DisplayFor(modelItem => modelItem.Description)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Contact Details</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            <span>Name</span>
+                            <br>
+                            <strong>@ViewBag.Name</strong>
+                        </p>
+
+                        <p>
+                            <span>Phone</span>
+                            <br>
+                            <strong><a href="tel:123-456-789">@ViewBag.Phone</a></strong>
+                        </p>
+
+                        <p>
+                            <span>Mobile phone</span>
+                            <br>
+                            <strong><a href="tel:456789123">@ViewBag.MobilePhone</a></strong>
+                        </p>
+
+                        <p>
+                            <span>Email</span>
+                            <br>
+                            <strong><a href="mailto:john@thecarhub.com">@ViewBag.Email</a></strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function imageSwitch(imgs) {
+        var expandImg = document.getElementById("expandedImg");
+        expandImg.src = imgs.src;
+    }
+</script>

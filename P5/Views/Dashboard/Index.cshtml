@@ -1,0 +1,10 @@
+﻿@model IEnumerable<The_Car_Hub.Models.InventoryViewModel>
+
+@{
+    ViewBag.Title = "The Car Hub - Dashboard";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+
+}
+<div id="view-all">
+    @await Html.PartialAsync("_ViewAll",Model)
+</div>

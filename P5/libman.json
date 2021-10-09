@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "font-awesome@5.14.0",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "icheck-bootstrap@3.0.1",
+      "destination": "wwwroot/lib/icheck-bootstrap/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "bootstrap-input-spinner@1.13.19",
+      "destination": "wwwroot/lib/bootstrap-input-spinner/",
+      "files": [
+        "src/bootstrap-input-spinner.min.js"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "sweetalert2@9.17.1",
+      "destination": "wwwroot/lib/sweetalert2/",
+      "files": [
+        "dist/sweetalert2.all.min.js"
+      ]
+    }
+  ]
+}

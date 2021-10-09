@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RestAPI</name>
+    </assembly>
+    <members>
+        <member name="M:RestAPI.Controllers.BidController.GetBid">
+             <summary>
+             Gets all the bids.
+             </summary>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A list of bids.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.BidController.GetBid(System.Int32)">
+             <summary>
+             Gets a bid by <paramref name="id"/>.
+             </summary>
+             <param name="id">The Id of the bid.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A bid.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.BidController.PutBid(System.Int32,RestAPI.Models.DTO.BidDto)">
+             <summary>
+             Update a bid.
+             </summary>
+             <param name="id">The Id of the current bid.</param>
+             <param name="bidDto">The bid with the new value.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A bid.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.BidController.PostBid(RestAPI.Models.DTO.BidDto)">
+             <summary>
+             Save a bid.
+             </summary>
+             <param name="bidDto">The bid to save.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A bid.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.BidController.DeleteBid(System.Int32)">
+             <summary>
+             Delete a bid.
+             </summary>
+             <param name="id">The Id of the bid to delete.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> Nothing.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.CurvePointController.GetCurvePoint">
+             <summary>
+             Gets all the curve-points.
+             </summary>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A list of curve-points.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.CurvePointController.GetCurvePoint(System.Int32)">
+             <summary>
+             Gets a curve-point by Id.
+             </summary>
+             <param name="id">The Id of the curve-point.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A curve-point.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.CurvePointController.PutCurvePoint(System.Int32,RestAPI.Models.DTO.CurvePointDto)">
+             <summary>
+             Update a curve-point.
+             </summary>
+             <param name="id">The Id of the current curve-point.</param>
+             <param name="curvePointDto">The curve-point with the new value.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A curve-point.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.CurvePointController.PostCurvePoint(RestAPI.Models.DTO.CurvePointDto)">
+             <summary>
+             Save a curve-point.
+             </summary>
+             <param name="curvePointDto">The curve-point to save.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A curve-point.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.CurvePointController.DeleteCurvePoint(System.Int32)">
+             <summary>
+             Delete a curve-point.
+             </summary>
+             <param name="id">The Id of the curve-point to delete.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> Nothing.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.RatingController.GetRating">
+             <summary>
+             Gets all the ratings.
+             </summary>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A list of ratings.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.RatingController.GetRating(System.Int32)">
+             <summary>
+             Gets a rating by Id.
+             </summary>
+             <param name="id">The Id of the rating.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A rating.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.RatingController.PutRating(System.Int32,RestAPI.Models.DTO.RatingDto)">
+             <summary>
+             Update a rating.
+             </summary>
+             <param name="id">The Id of the current rating.</param>
+             <param name="ratingDto">The rating with the new value.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A rating.
+             </returns> 
+        </member>
+        <member name="M:RestAPI.Controllers.RatingController.PostRating(RestAPI.Models.DTO.RatingDto)">
+             <summary>
+             Save a rating.
+             </summary>
+             <param name="ratingDto">The rating to save.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A rating.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.RatingController.DeleteRating(System.Int32)">
+             <summary>
+             Delete a rating.
+             </summary>
+             <param name="id">The Id of the rating to delete.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> Nothing.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.RuleController.GetRule">
+             <summary>
+             Gets all the rules.
+             </summary>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A list of rules.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.RuleController.GetRule(System.Int32)">
+             <summary>
+             Gets a rule by Id.
+             </summary>
+             <param name="id">The Id of the rule.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A rule.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.RuleController.PutRule(System.Int32,RestAPI.Models.DTO.RuleDto)">
+             <summary>
+             Update a rule.
+             </summary>
+             <param name="id">The Id of the current rule.</param>
+             <param name="ruleDto">The rule with the new value.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A rule.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.RuleController.PostRule(RestAPI.Models.DTO.RuleDto)">
+             <summary>
+             Save a rule.
+             </summary>
+             <param name="ruleDto">The rule to save.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A rule.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.RuleController.DeleteRule(System.Int32)">
+             <summary>
+             Delete a rule.
+             </summary>
+             <param name="id">The Id of the rule to delete.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> Nothing.
+             </returns>
+            <response code="404">If the rule is not found.</response>
+        </member>
+        <member name="M:RestAPI.Controllers.TradeController.GetTrade">
+             <summary>
+             Gets all the trades.
+             </summary>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A list of trades.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.TradeController.GetTrade(System.Int32)">
+             <summary>
+             Gets a trade by Id.
+             </summary>
+             <param name="id">The Id of the trade.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A trade.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.TradeController.PutTrade(System.Int32,RestAPI.Models.DTO.TradeDto)">
+             <summary>
+             Update a trade.
+             </summary>
+             <param name="id">The Id of the current trade.</param>
+             <param name="tradeDto">The trade with the new value.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A trade.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.TradeController.PostTrade(RestAPI.Models.DTO.TradeDto)">
+             <summary>
+             Save a trade.
+             </summary>
+             <param name="tradeDto">The trade to save.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A trade.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.TradeController.DeleteTrade(System.Int32)">
+             <summary>
+             Delete a trade.
+             </summary>
+             <param name="id">The Id of the trade to delete.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> Nothing.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.UserController.GetUser">
+             <summary>
+             Gets all the users.
+             </summary>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A list of users.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.UserController.GetUser(System.String)">
+             <summary>
+             Gets a user by Id.
+             </summary>
+             <param name="id">The Id of the user.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A user.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.UserController.PutUser(System.String,RestAPI.Models.Authentication.DTO.UserDto)">
+             <summary>
+             Update a user.
+             </summary>
+             <param name="id">The Id of the current user.</param>
+             <param name="userDto">The user with the new value.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A user.
+             </returns> 
+        </member>
+        <member name="M:RestAPI.Controllers.UserController.PostUser(RestAPI.Models.Authentication.DTO.UserDto)">
+             <summary>
+             Save a user.
+             </summary>
+             <param name="userDto">The user to save.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>A user.
+             </returns>
+        </member>
+        <member name="M:RestAPI.Controllers.UserController.DeleteUser(System.String)">
+             <summary>
+             Delete a user.
+             </summary>
+             <param name="id">The Id of the user to delete.</param>
+             <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> Nothing.
+             </returns>
+        </member>
+        <member name="T:RestAPI.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.appsettings">
+            <summary>
+              Looks up a localized string similar to appsettings.json.
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.BidNotFound">
+            <summary>
+              Looks up a localized string similar to Bid not found in the database..
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.BidOwnerDelete">
+            <summary>
+              Looks up a localized string similar to Owner only can delete this bid..
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.BidOwnerEdit">
+            <summary>
+              Looks up a localized string similar to Owner only can edit this bid..
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.CurvePointNotFound">
+            <summary>
+              Looks up a localized string similar to Curve point not found in the database..
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.RatingNotFound">
+            <summary>
+              Looks up a localized string similar to Rating not found in the database..
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.RuleNotFound">
+            <summary>
+              Looks up a localized string similar to Rule not found in the database..
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.TradeNotFound">
+            <summary>
+              Looks up a localized string similar to Trade not found in the database..
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.TradeOwnerDelete">
+            <summary>
+              Looks up a localized string similar to Owner only can delete this trade..
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.TradeOwnerEdit">
+            <summary>
+              Looks up a localized string similar to Owner only can edit this trade..
+            </summary>
+        </member>
+        <member name="P:RestAPI.Properties.Resources.UserNotFound">
+            <summary>
+              Looks up a localized string similar to User not found in the database..
+            </summary>
+        </member>
+    </members>
+</doc>

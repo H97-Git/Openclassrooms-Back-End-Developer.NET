@@ -1,0 +1,79 @@
+﻿@model IEnumerable<The_Car_Hub.Models.InventoryViewModel>
+@{
+    ViewBag.Title = "The Car Hub - Cars";
+    Layout = "~/Views/Shared/CarDealerTemplate/_MainLayout.cshtml";
+}
+
+<section >
+    <div class="container">
+        <div class="text-center">
+            <h1>Car Listing</h1>
+            <br>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, alias.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        var photoPath = "/upload/" + item.PhotosName.FirstOrDefault();
+
+                        <div class="col-lg-6 col-md-4 col-sm-6">
+                            <div class="courses-thumb courses-thumb-secondary">
+                                <div class="courses-top">
+                                    <div class="courses-image">
+                                        <a asp-controller="Car" asp-action="Details" asp-route-id="@item.Id"><img src="@photoPath" class="img-responsive" alt=""></a>                                        
+                                    </div>
+                                    <div class="courses-date">
+                                        <span title="Author"><i class="fas fa-tachometer-alt"></i> @Html.DisplayFor(modelItem => item.Kilometer) km</span>
+                                        <span title="Author"><i class="fa fa-cube"></i> @Html.DisplayFor(modelItem => item.EngineSize) cc</span>
+                                        <span title="Views"><i class="fa fa-cog"></i> @Html.DisplayFor(modelItem => item.Gearbox)</span>
+                                        @switch (item.Status)
+                                        {
+                                            case "Unavaible":
+                                                <span class="label label-danger">
+                                                    @Html.DisplayFor(modelItem => item.Status)
+                                                </span>
+                                                break;
+                                            case "Maintenance":
+                                                <span class="label label-warning">
+                                                    @Html.DisplayFor(modelItem => item.Status)
+                                                </span>
+                                                break;
+                                            case "OnSale":
+                                                item.Status = "On sale";
+                                                <span class="label label-primary">
+                                                    @Html.DisplayFor(modelItem => item.Status)
+                                                </span>
+                                                break;
+                                            case "Sold":
+                                                <span class="label label-success">
+                                                    @Html.DisplayFor(modelItem => item.Status)
+                                                </span>
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    </div>
+                                </div>
+                                <div class="courses-detail">
+                                    <h3><a asp-controller="Car" asp-action="Details" asp-route-id="@item.Id"><strong>@Html.DisplayFor(modelItem => item.Make) </strong>@Html.DisplayFor(modelItem => item.Model) </a></h3>
+                                    <p class="lead"><strong>$ @Html.DisplayFor(modelItem => item.SellingPrice)</strong></p>
+                                    <p>@Html.DisplayFor(modelItem => item.Fuel) &nbsp;&nbsp;/&nbsp;&nbsp; @Html.DisplayFor(modelItem => item.Year) &nbsp;&nbsp;/&nbsp;&nbsp; @Html.DisplayFor(modelItem => item.Type)</p>
+                                </div>
+                                <div class="courses-info">
+                                    <a asp-controller="Car" asp-action="Details" asp-route-id="@item.Id" class="section-btn btn btn-primary btn-block">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

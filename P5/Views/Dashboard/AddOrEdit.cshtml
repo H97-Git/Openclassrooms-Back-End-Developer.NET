@@ -1,0 +1,311 @@
+﻿@using The_Car_Hub.Models
+@model InventoryViewModel
+@{
+    Layout = null;
+    var isEdit = Model != null;
+    var id = isEdit ? Model.Id : 0;
+}
+<div class="row">
+    <div class="col-md-12">
+        <form autocomplete="off" enctype="multipart/form-data" asp-action="AddOrEdit" asp-route-id="@id" onsubmit="return jQueryAjaxPost(this)">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-sm-7">
+                    <label asp-for="VIN" class="control-label"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">#</div>
+                        </div>
+                        <input onchange="verifyVIN('@Url.Action("VerifyVIN","Dashboard",null,Context.Request.Scheme)')" asp-for="VIN" class="form-control" />
+                    </div>
+                    <span id="validationVIN" asp-validation-for="VIN" class="text-danger"></span>
+                </div>
+                <div class="col-sm-5">
+                    <label asp-for="Year" class="control-label"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                        </div>
+                        <select asp-for="Year" class="form-control">
+                            <option disabled selected hidden> ---- </option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                            <option value="2003">2003</option>
+                            <option value="2002">2002</option>
+                            <option value="2001">2001</option>
+                            <option value="2000">2000</option>
+                            <option value="1999">1999</option>
+                            <option value="1998">1998</option>
+                            <option value="1997">1997</option>
+                            <option value="1996">1996</option>
+                            <option value="1995">1995</option>
+                            <option value="1994">1994</option>
+                            <option value="1993">1993</option>
+                            <option value="1992">1992</option>
+                            <option value="1991">1991</option>
+                            <option value="1990">1990</option>
+                        </select>
+                    </div>
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label asp-for="Make" class="control-label"></label>
+                    <input asp-for="Make" class="form-control" />
+                    <span asp-validation-for="Make" class="text-danger"></span>
+                </div>
+                <div class="col-sm-6">
+                    <label asp-for="Model" class="control-label"></label>
+                    <input asp-for="Model" class="form-control" />
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label asp-for="Trim" class="control-label"></label>
+                    <input asp-for="Trim" class="form-control" />
+                    <span asp-validation-for="Trim" class="text-danger"></span>
+                </div>
+                <div class="col-sm-6">
+                    <label asp-for="Color" class="control-label"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-palette"></i></div>
+                        </div>
+                        <select asp-for="Color" class="form-control">
+                            <option disabled selected hidden> ---- </option>
+                            <option>Aqua </option>
+                            <option>Black</option>
+                            <option>Blue</option>
+                            <option>Fuchsia</option>
+                            <option>Gray</option>
+                            <option>Green</option>
+                            <option>Lime</option>
+                            <option>Maroon</option>
+                            <option>Navy</option>
+                            <option>Olive</option>
+                            <option>Purple</option>
+                            <option>Red</option>
+                            <option>Silver</option>
+                            <option>Teal</option>
+                            <option>White</option>
+                            <option>Yellow</option>
+                        </select>
+                    </div>
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gearbox" class="control-label"></label>
+                <select asp-for="Gearbox" class="form-control">
+                    <option disabled selected hidden> ----- </option>
+                    <option>Automatic</option>
+                    <option>Manual</option>
+                </select>
+                <span asp-validation-for="Gearbox" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-5">
+                    <label asp-for="Fuel" class="control-label"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-gas-pump"></i></div>
+                        </div>
+                        <select asp-for="Fuel" class="form-control">
+                            <option disabled selected hidden> ------- </option>
+                            <option>Gasoline</option>
+                            <option>Diesel</option>
+                        </select>
+                    </div>
+
+                    <span asp-validation-for="Fuel" class="text-danger"></span>
+                </div>
+                <div class="col-sm-7">
+                    <label asp-for="EngineSize" class="control-label"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">cc</div>
+                        </div>
+                        <input asp-for="EngineSize" class="form-control" />
+                    </div>
+                    <span asp-validation-for="EngineSize" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label asp-for="Kilometer" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">km</div>
+                    </div>
+                    <input asp-for="Kilometer" class="form-control" />
+                </div>
+                <span asp-validation-for="Kilometer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seats" class="control-label"></label>
+                <input asp-for="Seats" class="form-control" />
+                <span asp-validation-for="Seats" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-7">
+                    <label asp-for="PurchaseDate" class="control-label"></label>
+                    <input asp-for="PurchaseDate" class="form-control" />
+                    <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                </div>
+                <div class="col-sm-5">
+                    <label asp-for="PurchasePrice" class="control-label"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                        </div>
+                        <input asp-for="PurchasePrice" class="form-control" />
+                    </div>
+                    <span asp-validation-for="PurchasePrice" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-7">
+                    <label asp-for="Repairs" class="control-label"></label>
+                    <input asp-for="Repairs" class="form-control" />
+                    <span asp-validation-for="Repairs" class="text-danger"></span>
+                </div>
+                <div class="col-sm-5">
+                    <label asp-for="RepairsCost" class="control-label"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                        </div>
+                        <input asp-for="RepairsCost" class="form-control" />
+                    </div>
+                    <span asp-validation-for="RepairsCost" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="LotDate" class="control-label"></label>
+                <input asp-for="LotDate" class="form-control" />
+                <span asp-validation-for="LotDate" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-7">
+                    <label asp-for="SaleDate" class="control-label"></label>
+                    <input asp-for="SaleDate" class="form-control" />
+                    <span asp-validation-for="SaleDate" class="text-danger"></span>
+                </div>
+                <div class="col-sm-5">
+                    <label asp-for="SellingPrice" class="control-label"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                        </div>
+                        <input asp-for="SellingPrice" class="form-control" />
+                    </div>
+                    <span asp-validation-for="SellingPrice" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <select asp-for="Type" class="form-control">
+                    <option disabled hidden selected> -------- </option>
+                    <option>New vehicle</option>
+                    <option>Used vehicle</option>
+                </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Photos</label>
+                <div class="custom-file">
+                    <label asp-for="Photos" class="control-label custom-file-label">Choose File...</label>
+                    <input multiple asp-for="Photos" class="form-control custom-file-input" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option disabled selected hidden> -------- </option>
+                    <option>Unavaible</option>
+                    <option>Maintenance</option>
+                    <option value="OnSale">On sale</option>
+                    <option>Sold</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label asp-for="IsFeatured" class="labelFeatured">
+                        Featured <input asp-for="IsFeatured" class="inputFeatured" />
+                    </label>
+                </div>
+                <div class="col-sm-6">
+                    @{var isDisabled = isEdit ? null : "disabled";}
+                    <input id="AddOrEditSubmit" @isDisabled type="submit" value="Save" class="btn btn-primary form-control" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        if ($('.custom-file-input')) {
+            $('.custom-file-input').on("change", function () {
+                var files = $(this)[0].files
+                if (files.length == 1) {
+                    var filename = $(this).val().split("\\").pop()
+                    $('.custom-file-label').text(filename)
+                } else {
+                    $('.custom-file-label').text(files.length + ' files selected')
+                }
+            })
+        }
+
+        $('#PurchasePrice').on("change keyup", function () {
+            var purchasePrice = Number($('#PurchasePrice').val())
+            var feeValue = Number($("#feeValue").val())
+            var repairCost = Number($("#RepairsCost").val())
+
+            $('#SellingPrice').val(purchasePrice + repairCost + feeValue)
+        })
+
+        $('#RepairsCost').on("change keyup", function () {
+            var purchasePrice = Number($('#PurchasePrice').val())
+            var feeValue = Number($("#feeValue").val())
+            var repairCost = Number($("#RepairsCost").val())
+
+            $('#SellingPrice').val(purchasePrice + repairCost + feeValue)
+        })
+
+        if ($('.input-validation-error').length != 0) {
+            $('.input-validation-error').addClass('is-invalid');
+            $(".field-validation-valid").parent().find(".form-control").addClass("is-valid")
+        }
+
+        $(".modal").scrollTop(0);
+    })
+</script>

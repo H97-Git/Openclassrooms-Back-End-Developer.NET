@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <partial name="CarDealerTemplate/_Styles" />
+    <partial name="CarDealerTemplate/_Scripts" />
+    <title>@ViewBag.Title</title>
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+    <!-- MENU -->
+    <partial name="CarDealerTemplate/_MainNavigation" />
+    @RenderBody()
+    <!-- FOOTER -->
+    <partial name="CarDealerTemplate/_Footer" />
+</body>
+</html>

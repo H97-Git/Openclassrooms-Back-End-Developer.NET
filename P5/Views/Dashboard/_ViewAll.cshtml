@@ -1,0 +1,239 @@
+﻿@model IEnumerable<The_Car_Hub.Models.InventoryViewModel>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Collapsable</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3 col-3 col-sm1">
+                        <!-- small box -->
+                        <div class="small-box bg-primary">
+                            <div class="inner">
+                                <h3>@Model.Count()</h3>
+
+                                <p>Cars</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <a class="small-box-footer" asp-action="Export">Export <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-3 col-sm1">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>@Model.Count()</h3>
+
+                                <p>Delete All Cars</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <a class="small-box-footer" onclick="jQueryAjaxDeleteAll()">Delete <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-3 col-sm1">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                @if (ViewBag.UnusedImages?.Result != null)
+                                {
+                                    <h3 id="unusedImages">@ViewBag.UnusedImages.Result</h3>
+                                }
+                                else
+                                {
+                                    <h3 id="unusedImages">0</h3>
+                                }
+                                <p>Unused images</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            @if (ViewBag.UnusedImages?.Result == 0)
+                            {
+                                <a class="small-box-footer" style="pointer-events: none !important;">Empty space <i class="fas fa-arrow-circle-right"></i></a>
+                            }
+                            else
+                            {
+                                <a class="small-box-footer" asp-action="EmptyImageFolder">Empty space <i class="fas fa-arrow-circle-right"></i></a>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-3 col-sm1">
+                        <div class="card bg-warning text-white">
+                            <div class="card-header">
+                                <h3 class="card-title">Automatic fees $</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <input id="feeValue" type="number" value="500" min="0" max="5000" step="50" />
+                                <script>
+                                    $("input[type='number']").inputSpinner();
+                                </script>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Inventory Card Text</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="inventoryTable" class="table table-striped table-bordered table-hover table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.VIN)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Make)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Model)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PurchaseDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PurchasePrice)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LotDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SaleDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Year)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Color)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a target="_blank" rel="noopener noreferrer" href="@Url.Action("Details","Car",new {id=item.Id},Context.Request.Scheme)">@Html.DisplayFor(modelItem => item.VIN)</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Make)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Model)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PurchasePrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LotDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SaleDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Year)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Color)
+                                </td>
+                                <td>
+                                    @switch (item.Status)
+                                    {
+                                        case "Unavaible":
+                                            <span class="badge badge-danger">
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </span>
+                                            break;
+                                        case "Maintenance":
+                                            <span class="badge badge-warning">
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </span>
+                                            break;
+                                        case "OnSale":
+                                            item.Status = "On sale";
+                                            <span class="badge badge-primary">
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </span>
+                                            break;
+                                        case "Sold":
+                                            <span class="badge badge-success">
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </span>
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                </td>
+                                <td>
+                                    <div>
+
+                                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Dashboard",new {id=item.Id},Context.Request.Scheme)','Update Inventory')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
+                                        <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                            <input type="submit" value="Delete" class="btn btn-danger" />
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<p>
+    <a onclick="showInPopup('@Url.Action("AddOrEdit","Dashboard",null,Context.Request.Scheme)','Create')" class="btn btn-success text-white">Create New</a>
+</p>
+<!-- /.row -->
+<script>
+    $(function () {
+        $('#inventoryTable').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        })
+    })
+
+    var message = '@ViewBag.SuccessMsg'
+
+    if(message){
+        FireToast(message)
+    }
+</script>
