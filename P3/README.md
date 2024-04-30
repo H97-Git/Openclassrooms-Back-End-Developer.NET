@@ -1,4 +1,32 @@
-# DotNetEnglishP3
+# Lambazon Inventory Management Module
+Welcome to the Lambazon Inventory Management Module project! In this project, you'll be tasked with developing a user-friendly interface for managing internal inventory within the Lambazon web application.
+
+## Project Overview
+The Inventory Management Module is an internal tool designed to facilitate tracking and managing inventory for Lambazon's teams. The project aims to streamline the process of creating and validating products before they are entered into the system.
+
+## Getting Started
+To get started with the project, clone or download the repository to your local machine.
+
+## Implementation Details
+Your main task is to implement the remaining functionality outlined in Lee's notes, specifically focusing on creating and validating products through an intuitive interface. Ensure that you do not alter the existing logic in the codebase, as it is deemed solid and functional.
+
+## Testing
+A full regime of unit and integration tests is required to ensure the robustness and reliability of the new functionality. Implement tests that are congruent with the requirements and validate the intended functionality.
+
+## Deliverables
+### Scenario Deliverables
+* Completed Code: Zip file containing the completed code.
+* GitHub Repository: Link to the entire codebase on GitHub.
+### Presentation Deliverables
+* Powerpoint or Slide Deck: Presentation slides covering project details and implementation.
+* Project Presentation: Oral presentation explaining the development process and testing strategies.
+### Assessment Guidelines
+* Implement unit tests for the new functionality, ensuring they validate the intended features and adhere to industry standards.
+* Implement integration tests to validate the integration of the new functionality into the existing codebase.
+* Ensure that the C# code adheres to industry standards, including naming conventions, indentation, choice of constructs, and documentation.
+ 
+# Original README.MD
+## DotNetEnglishP3
 Student repo for project 3 of the Back-end developer: .NET path
 
 This project has a supporting database which will be created the first time the application is run. In order for the database to be correctly
